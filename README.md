@@ -7,3 +7,4 @@ A collection of small Python projects.
 - Password Generator
 - Hangman
 - Binary Search Algorithm
+- Tic Tac Toe
