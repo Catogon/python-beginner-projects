@@ -8,3 +8,4 @@ A collection of small Python projects.
 - Hangman
 - Binary Search Algorithm
 - Tic Tac Toe
+- Validity Checker for Credit Card
