@@ -1,7 +1,12 @@
+import os
 from random import choice
 from string import ascii_lowercase
 
-FILENAME = 'Hangman\\sowpods.txt'
+# Place the text file in data/ and insert its name here.
+FILENAME = 'sowpods.txt'
+
+# Change current working directory to the directory where this file is located.
+os.chdir(os.path.dirname(__file__))
 
 
 def get_rand_word(filename):
@@ -11,12 +16,7 @@ def get_rand_word(filename):
 
 def print_game(wrong, word, letters):
     # Print wrong guesses
-    print('\nWrong guess:', end=' ')
-    for i in range(len(wrong)):
-        if i != 0:
-            print(',', end=' ')
-        print(wrong[i], end='')
-    print()
+    print('\nWrong guess:', ', '.join(wrong))
     # Print letters
     for i in letters:
         if i is None:
@@ -37,7 +37,7 @@ def get_letter(attempt, guess):
     user_input = input(f'> Guess a letter ({attempt} attempts left): ').lower()
     # Make sure if the user input is a letter and not in the guess list
     if len(user_input) != 1 or user_input not in ascii_lowercase:
-        print(f"> Please input a letter!")
+        print("> Please input a letter!")
     elif user_input in guess:
         print(f"> You have guessed '{user_input}' before")
     else:
@@ -77,5 +77,5 @@ def play(word):
 
 
 if __name__ == "__main__":
-    word = get_rand_word(FILENAME)
+    word = get_rand_word(os.path.join('data', FILENAME))
     play(word)
